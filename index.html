@@ -44,32 +44,30 @@ title: VOX VTx patches
             </div>
         </div>
     </div>
-</div>
-<div class="buttons">
-    <button type="button" id="click">CLICK</button>
-    <input type="text" maxlength="3" size="3" id="text">
-    <!-- <input type="file" id="fileInput"> -->
-</div>
-<div class="list" id="list">
-    <p id="print"></p>
-    <table>
-        <thead>
-            <tr>
-                <th>Index</th>
-                <th>Nom</th>
-                <th>Inspiré par</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for amp in site.data.patches %}
-            <tr>
-                <td>{{ amp.Index }}</td>
-                <td>{{ amp.Name }}</td>
-                <td>{{ amp["Inspired by"] }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="buttons">
+        <button type="button" id="click">CLICK</button>
+        <input type="text" maxlength="3" size="3" id="text">
+    </div>
+    <div class="list" id="list">
+        <table>
+            <thead>
+                <tr>
+                    <th>Index</th>
+                    <th>Nom</th>
+                    <th>Inspiré par</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for amp in site.data.patches %}
+                <tr>
+                    <td>{{ amp.Index }}</td>
+                    <td>{{ amp.Name }}</td>
+                    <td>{{ amp["Inspired by"] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 <script type="text/javascript">
     var arrayJSON = {{ site.data.patches | jsonify }}
