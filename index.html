@@ -1,0 +1,76 @@
+---
+layout: default
+title: VOX VTx patches
+---
+
+<div class="all">
+    <div class="panel">
+        <img src="assets/images/panel.jpeg" alt="">
+    </div>
+    <div class="overlay">
+        <div class="first-row">
+            <div class="led manual">
+                <img src="assets/images/red.png">
+            </div>
+            <div class="led led-amp">
+                <img id="led-amp" src="assets/images/green.png">
+            </div>
+            <div class="amp">
+                <img class="knob" id="knob-amp" src="assets/images/knob.png" alt="">
+            </div>
+            <div class="sound-settings">
+                <img class="knob" id="gain" src="assets/images/knob.png" alt="">
+                <img class="knob" id="volume" src="assets/images/knob.png" alt="">
+                <img class="knob" id="treble" src="assets/images/knob.png" alt="">
+                <img class="knob" id="middle" src="assets/images/knob.png" alt="">
+                <img class="knob" id="bass" src="assets/images/knob.png" alt="">
+                <img class="knob" id="master" src="assets/images/knob.png" alt="">
+            </div>
+            <div class="power">
+                <img class="knob" id="power" src="assets/images/knob.png" alt="">
+            </div>
+        </div>
+        <div class="second-row">
+            <div class="pedal">
+                <img class="knob" id="pedal-selector" src="assets/images/selector.png" alt="">
+                <img class="knob" id="pedal-value" src="assets/images/selector.png" alt="">
+            </div>
+            <div class="modulation">
+                <img class="knob" id="mod" src="assets/images/selector.png" alt="">
+                <img class="knob" id="depth" src="assets/images/selector.png" alt="">
+            </div>
+            <div class="reverb">
+                <img class="knob" id="reverb-selector" src="assets/images/selector.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="buttons">
+    <button type="button" id="click">CLICK</button>
+    <input type="text" maxlength="3" size="3" id="text">
+    <!-- <input type="file" id="fileInput"> -->
+</div>
+<div class="list" id="list">
+    <p id="print"></p>
+    <table>
+        <thead>
+            <tr>
+                <th>Index</th>
+                <th>Nom</th>
+                <th>Inspiré par</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for amp in site.data.patches %}
+            <tr>
+                <td>{{ amp.Index }}</td>
+                <td>{{ amp.Name }}</td>
+                <td>{{ amp["Inspired by"] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript">
+    var arrayJSON = {{ site.data.patches | jsonify }}
+</script>
