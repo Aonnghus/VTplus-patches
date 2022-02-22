@@ -1,8 +1,14 @@
 $(document).ready(function() {
-    var maxWatts = 30; // Maximum watts for VT20+
+    var maxWatts = $("#select-amp").find(":selected").val();
+    $("#select-amp").on("change", function() {
+        maxWatts = $(this).find(":selected").val();
+        if (typeof settings != "undefined") {
+            applySettings(settings, maxWatts);
+        }
+    });
     $("#click").click(function() {
         var selectedIndex = parseInt($("#text").val());
-        var settings = arrayJSON[selectedIndex];
+        settings = arrayJSON[selectedIndex];
         console.log(settings);
         applySettings(settings, maxWatts);
     });
