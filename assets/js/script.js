@@ -8,9 +8,14 @@ $(document).ready(function() {
     });
     $("#click").click(function() {
         var selectedIndex = parseInt($("#text").val());
-        settings = arrayJSON[selectedIndex];
-        console.log(settings);
-        applySettings(settings, maxWatts);
+        if (0 <= selectedIndex && selectedIndex < arrayJSON.length) {
+            settings = arrayJSON[selectedIndex];
+            console.log(settings);
+            applySettings(settings, maxWatts);
+        } else {
+            alert("Wrong patch number!");
+        }
+        
     });
 });
 
