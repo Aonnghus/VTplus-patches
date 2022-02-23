@@ -20,7 +20,7 @@ $(document).ready(function() {
 });
 
 function applySettings(settings, maxWatts) {
-    $("#knob-amp").css({"transform": "rotate(" + 30 * settings["Amp"] + "deg)"});
+    $("#knob-amp").css({"transform": "rotate(" + 30 * settings["Amp style"] + "deg)"});
     $("#power").css({"transform": "rotate(" + Math.min(30 + 3 * (settings["PowerLevel"] * settings["AmpPower"] / maxWatts), 330) + "deg)"});
     $("#gain").css({"transform": "rotate(" + (30 + 3 * settings["Gain"]) + "deg)"});
     $("#volume").css({"transform": "rotate(" + (30 + 3 * settings["Volume"]) + "deg)"});
