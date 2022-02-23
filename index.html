@@ -60,6 +60,7 @@ title: VOX VT+ patches
                 <tr>
                     <th>Index</th>
                     <th>Name</th>
+                    <th>Music style</th>
                     <th>Inspired by</th>
                 </tr>
             </thead>
@@ -68,6 +69,7 @@ title: VOX VT+ patches
                 <tr>
                     <td>{{ forloop.index | minus: 1 }}</td>
                     <td>{{ amp.Name }}</td>
+                    <td>{{ amp["Music style"] }}</td>
                     <td>{{ amp["Inspired by"] }}</td>
                 </tr>
                 {% endfor %}
