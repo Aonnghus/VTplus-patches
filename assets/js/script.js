@@ -34,14 +34,14 @@ function applySettings(settings, maxWatts) {
     $("#depth").css({"transform": "rotate(" + (30 + 3 * settings["Edit2"]) + "deg)"});
     $("#reverb-selector").css({"transform": "rotate(" + (30 + 3 * settings["Edit3"]) + "deg)"});
 
-    switch(settings["Red-Green"]) {
-        case "1.0":
+    switch(parseInt(settings["Red-Green"])) {
+        case 1:
             $("#led-amp").attr("src", "assets/images/green.png");
             break;
-        case "2.0":
+        case 2:
             $("#led-amp").attr("src", "assets/images/red.png");
             break;
-        case "3.0":
+        case 3:
             $("#led-amp").attr("src", "assets/images/orange.png");
             break;
     }
