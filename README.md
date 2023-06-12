@@ -4,7 +4,7 @@
 
 This repository contains the code of a website inspired by the work of Olaf Posdzech and ODNewTrix which is available [here](https://engon.de/sounds/vox_valvetronix_patches.htm).
 
-As explained by the author of his  website, custom sound settings (patches) shared by users on Voxamps.com were removed in 2013.
+As explained by the author on the aforementioned website, custom sound settings (patches) shared by users on Voxamps.com were removed in 2013.
 However, he succeeded in retrieving some files thanks to the [Wayback Machine](https://web.archive.org/), and created a wonderful Excel macro file out of them.
 
 As I did not own a copy of Excel, I was not able to use this macro file.
