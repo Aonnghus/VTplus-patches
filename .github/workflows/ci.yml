@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+
+      - name: Validate patches CSV
+        run: ruby scripts/validate-patches.rb
+
+      # github-pages pins the same Jekyll version and plugins that GitHub Pages builds with.
+      - name: Install Jekyll
+        run: gem install --no-document github-pages
+
+      - name: Build site
+        run: jekyll build
+
+      - name: Check every patch is rendered
+        run: |
+          expected=$(ruby -rcsv -e 'puts CSV.read("_data/patches.csv", headers: true).size')
+          rendered=$(grep -o 'class="patch-index"' _site/index.html | wc -l)
+          echo "patches in CSV: $expected, rendered in table: $rendered"
+          test "$expected" -eq "$rendered"
