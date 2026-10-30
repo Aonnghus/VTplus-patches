@@ -56,6 +56,10 @@ title: VOX VT+ patches
         <button type="button" id="click">Select</button>
     </div>
     <div class="list" id="list">
+        <div class="patch-details">
+            <p class="patch-note" id="patch-note"></p>
+            <p class="patch-description" id="patch-description"></p>
+        </div>
         <table>
             <thead>
                 <tr>
@@ -67,9 +71,10 @@ title: VOX VT+ patches
             </thead>
             <tbody>
                 {% for amp in site.data.patches %}
-                <tr>
+                {% comment %}Some patches were recovered without their settings: those columns are all blank.{% endcomment %}
+                <tr{% unless amp["Amp style"] %} class="no-settings"{% endunless %}>
                     <td class="patch-index" data-index="{{ forloop.index | minus: 1 }}">{{ forloop.index | minus: 1 }}</td>
-                    <td>{{ amp.Name }}</td>
+                    <td>{{ amp.Name }}{% unless amp["Amp style"] %} <span class="no-settings-tag">no settings</span>{% endunless %}</td>
                     <td>{{ amp["Music style"] }}</td>
                     <td>{{ amp["Inspired by"] }}</td>
                 </tr>

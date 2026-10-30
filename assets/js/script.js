@@ -25,8 +25,26 @@ $(document).ready(function() {
     });
 });
 
+// Some patches were recovered without their settings: those fields are all null.
+function hasSettings(settings) {
+    return settings["Amp style"] !== null;
+}
+
 function applySettings(settings, maxWatts) {
     $("#patch-name").text(settings["Name"]);
+    $("#patch-description").text(settings["Description"] || "");
+
+    if (!hasSettings(settings)) {
+        // Return the knobs and LED to their rest position rather than reading nulls as zero.
+        $(".knob").css({"transform": ""});
+        $("#led-amp").attr("src", "assets/images/green.png");
+        $(".panel, .overlay").addClass("no-settings");
+        $("#patch-note").text("The settings for this patch were not recovered.");
+        return;
+    }
+    $(".panel, .overlay").removeClass("no-settings");
+    $("#patch-note").text("");
+
     $("#knob-amp").css({"transform": "rotate(" + 30 * settings["Amp style"] + "deg)"});
     $("#power").css({"transform": "rotate(" + Math.min(30 + 3 * (settings["PowerLevel"] * settings["AmpPower"] / maxWatts), 330) + "deg)"});
     $("#gain").css({"transform": "rotate(" + (30 + 3 * settings["Gain"]) + "deg)"});
